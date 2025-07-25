@@ -45,6 +45,16 @@ This repository covers data from multiple publication workflow systems:
 - **SNAPP**: Springer Nature Article Processing Platform
 - **OASIS**: Post-acceptance workflow system (used across all PRS systems)
 
+## Prerequisites
+
+To access the datasets referenced in this repository, you need to be added to the following Google BigQuery projects:
+
+1. **datasn-submissions-55677263**: Contains joint submissions data across all PRS systems
+2. **snapp-data-1158cc46**: Contains SNAPP-specific submission data
+3. **snproject0c0a584f**: Contains post-acceptance/OASIS data and reconciliation reports
+
+Please contact your team administrator or data access manager to request access to these projects. Once access is granted, you'll be able to execute the example queries provided in this repository.
+
 ## Usage
 
 Browse through the relevant directories to understand the schemas and available datasets. Use the example queries provided in various directories as a starting point for your own analysis. The documentation in each file provides context about the data and its structure to help you formulate effective queries.
