@@ -48,3 +48,89 @@ This repository covers data from multiple publication workflow systems:
 ## Usage
 
 Browse through the relevant directories to understand the schemas and available datasets. Use the example queries provided in various directories as a starting point for your own analysis. The documentation in each file provides context about the data and its structure to help you formulate effective queries.
+
+### Example Queries
+
+Here are some examples of the types of queries you can generate to analyze the research publication workflow at Springer Nature:
+
+#### Joint Submissions Analysis
+
+```sql
+-- Count submissions by source system over time
+SELECT 
+  source_system,
+  EXTRACT(QUARTER FROM submission_date) AS quarter,
+  EXTRACT(YEAR FROM submission_date) AS year,
+  COUNT(*) AS submission_count
+FROM 
+  `datasn-submissions-55677263.prod_joint_submissions_core.submissions_v2`
+WHERE 
+  submission_date BETWEEN '2024-01-01' AND '2025-06-30'
+GROUP BY 
+  source_system, quarter, year
+ORDER BY 
+  year, quarter, source_system;
+```
+
+#### Post-Acceptance (OASIS) Analysis
+
+```sql
+-- Analyze workflow stages and their completion rates
+SELECT
+  JSON_EXTRACT_SCALAR(json_blob, '$.status') AS workflow_status,
+  COUNT(*) AS workflow_count,
+  ROUND(AVG(TIMESTAMP_DIFF(
+    CURRENT_TIMESTAMP(),
+    TIMESTAMP(JSON_EXTRACT_SCALAR(json_blob, '$.workflow_created')),
+    DAY
+  )), 1) AS avg_days_in_workflow
+FROM
+  `snproject0c0a584f.oasis_data_private.post_acceptance_workflow_projection`
+WHERE
+  JSON_EXTRACT_SCALAR(json_blob, '$.workflow_created') >= '2025-01-01'
+GROUP BY
+  workflow_status
+ORDER BY
+  avg_days_in_workflow DESC;
+```
+
+#### SNAPP Submissions Analysis
+
+```sql
+-- Analyze editorial decision times by journal
+SELECT
+  j.journalTitle,
+  j.publishingModel,
+  COUNT(DISTINCT s.submissionId) AS submission_count,
+  ROUND(AVG(CASE WHEN s.stage_to = 'DECISION_MADE' 
+    THEN s.duration_days ELSE NULL END), 1) AS avg_days_to_decision
+FROM
+  `snapp-data-1158cc46.snapp_data.journal_config` AS j
+JOIN
+  `snapp-data-1158cc46.snapp_data.submissions_stages_tat` AS s
+ON
+  j.journalId = s.journalId
+WHERE
+  s.stage_since BETWEEN TIMESTAMP('2025-01-01') AND TIMESTAMP('2025-06-30')
+GROUP BY
+  j.journalTitle, j.publishingModel
+HAVING
+  submission_count > 5
+ORDER BY
+  avg_days_to_decision;
+```
+
+### How to Use with GitHub Copilot
+
+1. **Understand Your Analysis Needs**: Determine which part of the research publication workflow you want to analyze (submissions, post-acceptance, or both).
+
+2. **Navigate to Relevant Files**: Browse the appropriate schema files to understand the data structure and available fields.
+
+3. **Generate Queries**: Use GitHub Copilot to help generate SQL queries by:
+   - Describing the analysis you want to perform
+   - Referencing specific tables or fields from the schema documentation
+   - Using example queries as templates
+
+4. **Example Prompt for Copilot**: "Create a SQL query for BigQuery that analyzes the acceptance rate of submissions in SNAPP by journal and article type for Q2 2025."
+
+5. **Execute in BigQuery**: Take the generated SQL and run it in Google BigQuery Studio, adjusting parameters as needed.
