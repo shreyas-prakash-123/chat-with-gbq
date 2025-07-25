@@ -64,8 +64,13 @@ When generating SQL queries for this repository, please follow these guidelines:
 
 4. **Follow BigQuery Best Practices**: Use appropriate syntax for BigQuery, including functions like EXTRACT(), JSON_EXTRACT_SCALAR(), etc.
 
-5. **Include Date Filtering**: Where appropriate, include date filters to limit data to relevant time periods.
+5. **LIMIT Clause Syntax**: LIMIT is not supported directly after FROM queries. Instead:
+   - Use the pipe operator: `|> LIMIT n`
+   - Or wrap the FROM query in parentheses: `(FROM ... ) LIMIT n`
+   - Or structure as a proper SELECT statement: `SELECT * FROM ... LIMIT n`
 
-6. **Consider Performance**: Write queries that are optimized for performance, especially when working with large datasets.
+6. **Include Date Filtering**: Where appropriate, include date filters to limit data to relevant time periods.
+
+7. **Consider Performance**: Write queries that are optimized for performance, especially when working with large datasets.
 
 
