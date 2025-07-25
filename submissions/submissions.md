@@ -1,3 +1,7 @@
+# SNAPP Submissions Schema
+
+This file documents the schema for submission data exclusively in the SNAPP system. Note that this only includes data from the SNAPP submission system and does not include eJP or eM data. For queries that span all submission systems, refer to the joint_submissions directory.
+
 project: snapp-data-1158cc46
 dataset: snapp_data
 table: submissions

@@ -1,4 +1,8 @@
 
+# SNAPP Journal Configuration
+
+This file documents the schema for journal configuration data exclusively in the SNAPP system. Note that this only includes journals that are in the SNAPP submissions phase and does not include journal data from eJP or eM systems. For queries that span all submission systems, refer to the joint_submissions directory.
+
 project: snapp-data-1158cc46
 dataset: snapp_data
 table: journal_config

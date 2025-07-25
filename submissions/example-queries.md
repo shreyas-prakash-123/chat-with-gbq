@@ -1,6 +1,6 @@
 # Example SQL Queries for SNAPP Submissions
 
-This file contains example queries that can be used to analyze submission data in the SNAPP system.
+This file contains example queries that can be used to analyze submission data exclusively in the SNAPP system. Note that these queries are specific to the SNAPP submission system only and do not include data from eJP or eM systems (for those, see the joint_submissions folder).
 
 ## Query 1: Journal Submission Volume
 

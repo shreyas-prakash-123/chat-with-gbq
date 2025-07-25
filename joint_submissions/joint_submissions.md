@@ -1,3 +1,7 @@
+# Joint Submissions Schema Across All PRS Systems
+
+This file documents the schema for the joint submissions datasets that consolidate data from all three PRS systems: eJP (Electronic Journal Publishing), eM (Editorial Manager), and SNAPP (Springer Nature Article Processing Platform). This unified schema allows for analysis across all submission systems.
+
 project: datasn-submissions-55677263
 dataset: prod_joint_submissions_core
 table: submissions_v2

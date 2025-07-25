@@ -9,9 +9,9 @@ This repository contains information about Google BigQuery (GBQ) datasets for re
 
 ### Joint Submissions
 Contains information on submissions across all PRS systems (eJP, eM, and SNAPP):
-- **[example_queries.md](./joint_submissions/example_queries.md)**: Sample SQL queries for joint submissions analysis.
-- **[joint_submissions.md](./joint_submissions/joint_submissions.md)**: Schema documentation for joint submissions datasets.
-- **[tat-documentation.md](./joint_submissions/tat-documentation.md)**: Documentation related to turnaround time for joint submissions.
+- **[example_queries.md](./joint_submissions/example_queries.md)**: Sample SQL queries for joint submissions analysis across all systems.
+- **[joint_submissions.md](./joint_submissions/joint_submissions.md)**: Schema documentation for joint submissions datasets that consolidate data from all three systems.
+- **[tat-documentation.md](./joint_submissions/tat-documentation.md)**: Documentation related to turnaround time for joint submissions across all systems.
 
 ### Post-Acceptance
 All workflows across all PRS systems go through OASIS (the only system for post-acceptance workflows):
@@ -23,14 +23,14 @@ All workflows across all PRS systems go through OASIS (the only system for post-
 - **[post_acceptance_workflow_projection.md](./post_acceptance/post_acceptance_workflow_projection.md)**: Documentation of workflows and the author journey through various stages of post-acceptance.
 
 ### Reconciliation Report
-- **[reconciliation_report.md](./reconciliation_report/reconciliation_report.md)**: Captures all events across funding, eligibility, licensing, rights, checkout payment, etc. for author workflows.
+- **[reconciliation_report.md](./reconciliation_report/reconciliation_report.md)**: Captures all events across funding, eligibility, licensing, rights, checkout payment, etc. for author workflows. (as this has the complete trial, this is also used by the CS support to diagnose what happened/what went wrong.)
 
 ### Submissions
-Information on the submissions phase of the research publishing workflow (specifically for SNAPP):
-- **[example-queries.md](./submissions/example-queries.md)**: Sample SQL queries for submissions analysis.
-- **[journal_config.md](./submissions/journal_config.md)**: Information on journals in the submissions phase.
-- **[submissions.md](./submissions/submissions.md)**: Information on all events that occur during submissions.
-- **[submissions_stages_tat.md](./submissions/submissions_stages_tat.md)**: Information on turnaround time for each event during the submissions workflow.
+Information on the submissions phase of the research publishing workflow exclusively for SNAPP system:
+- **[example-queries.md](./submissions/example-queries.md)**: Sample SQL queries for SNAPP submissions analysis only.
+- **[journal_config.md](./submissions/journal_config.md)**: Information on journals in the SNAPP submissions phase.
+- **[submissions.md](./submissions/submissions.md)**: Information on all events that occur during SNAPP submissions.
+- **[submissions_stages_tat.md](./submissions/submissions_stages_tat.md)**: Information on turnaround time for each event during the SNAPP submissions workflow.
 
 ## Purpose
 
